@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -57,6 +56,25 @@ public class Main {
     }
 
     public static void main(String[] args) {
+
+        System.out.println("---------------");
+        ErrorMethod em = new ErrorMethod();
+        System.out.println(em.sampleLogic());
+        System.out.println("---------------");
+
+        // 無名関数
+        Lam lam = new Lam() {
+            @Override
+            public void run() {
+                System.out.println("test Lam");
+            }
+        };
+        lam.run();
+
+        // Lambda
+        Lam lambda = () -> System.out.println("lambda lambda");
+        lambda.run();
+
         // String型として利用可能
         ClassSample<String> cs1 = new ClassSample<>("Hello");
         String str = cs1.getT();

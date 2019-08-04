@@ -15,6 +15,10 @@ repositories {
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
     testCompile("junit", "junit", "4.12")
+
+    runtime("org.apache.logging.log4j:log4j-slf4j-impl:2.6.1")
+    runtime("org.apache.logging.log4j:log4j-api:2.6.1")
+    runtime("org.apache.logging.log4j:log4j-core:2.6.1")
 }
 
 configure<JavaPluginConvention> {

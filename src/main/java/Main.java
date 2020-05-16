@@ -1,5 +1,10 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.function.*;
+
+import static java.util.Locale.filter;
+import static java.util.Locale.getISOCountries;
 
 /**
  * 型パラメータについて
@@ -55,6 +60,24 @@ public class Main {
         }
     }
 
+    public static void e(Lam l){
+        l.run();
+    }
+
+    public static <T> void foreach(List<T> l, Consumer<T> cn){
+        for(T ll : l){
+            cn.accept(ll);
+        }
+    }
+
+    public static <T, R> List<R> map(List<T> tList, Function<T,R> fn){
+        List<R> resultList = new ArrayList<>();
+        for(T t: tList){
+            resultList.add(fn.apply(t));
+        }
+        return resultList;
+    }
+
     public static void main(String[] args) {
 
         System.out.println("---------------");
@@ -74,6 +97,26 @@ public class Main {
         // Lambda
         Lam lambda = () -> System.out.println("lambda lambda");
         lambda.run();
+        e(lambda);
+
+        List<String> testList = Arrays.asList("test1","test22","test333");
+        Predicate<String> ckP = (String xxx) -> !xxx.isEmpty();
+
+        String yyy = "ttttttt";
+        Consumer<String> ckC = (String xxx) -> System.out.println(xxx);
+        foreach(testList, ckC);
+
+        // Functionインターフェースの例
+        map(testList, (String t) -> t.length()).forEach(System.out::println);
+
+
+        Supplier<SalesPerson> ssp = SalesPerson::new;
+        SalesPerson spX = ssp.get();
+
+        BiFunction<Integer, String, SalesPerson> sspp = SalesPerson::new;
+        System.out.println(sspp.apply(1, "masa").toString());
+
+
 
         // String型として利用可能
         ClassSample<String> cs1 = new ClassSample<>("Hello");

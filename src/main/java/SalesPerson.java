@@ -1,5 +1,6 @@
 class Person {
     String name;
+    public Person(){ }
     public Person(String name){
         this.name = name;
     }
@@ -14,7 +15,17 @@ public class SalesPerson extends Person {
         super(name);
         this.empID = empID;
     }
+    public SalesPerson(){
+        super();
+    }
     public int getEmpID(){
         return empID;
+    }
+
+    @Override
+    public String toString() {
+        return "SalesPerson{" +
+                "name='" + name + '\'' +
+                '}';
     }
 }

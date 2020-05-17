@@ -14,3 +14,25 @@ Collectors クラスの機能
 - ストリーム要素を単一の値に縮小してまとめる
 - グループ化要素
 - 要素を分割する
+
+
+> import static java.util.stream.Collectors.*.
+
+
+```java
+/**
+* T は、収集されるストリーム内のアイテムの一般的なタイプです。
+* Aはアキュムレータのタイプであり、コレクション・プロセス中に部分的な結果が蓄積されるオブジェクトである。
+* Rは、コレクト操作の結果として得られるオブジェクト(通常はコレクション)のタイプです。
+*/
+public interface Collector<T, A, R> {
+    Supplier<A> supplier().
+    BiConsumer<A, T>アキュムレータ().
+    Function<A, R>finisher().
+    BinaryOperator<A>コンビナー().
+    Set<Characteristics>特性().
+}
+
+// 実装
+public class ToListCollector<T> implements Collector<T, List<T>, List<T>>
+```

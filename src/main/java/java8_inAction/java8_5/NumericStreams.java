@@ -19,35 +19,38 @@ public class NumericStreams {
         List<Integer> numbers = Arrays.asList(3,4,5,1,2);
         Arrays.stream(numbers.toArray()).forEach(System.out::println);
 
+        // mapToIntを利用して、Stream<Integerではなく)IntStreamを返す
         int calories = Dish.menu.stream()
                 .mapToInt(Dish::getCalories)
                 .sum();
         System.out.println("Number of calories:" + calories);
 
+        // IntStreamをStream<Integer>に変換する
+        IntStream intStreamCalories = Dish.menu.stream()
+                .mapToInt(Dish::getCalories);
+        Stream<Integer> streamCalories = intStreamCalories.boxed();
+
         System.out.println("--------------------");
 
         // max and OptionalInt
+        // Optionalを利用すると、値の存在を確認できる。
+        // IntStreamのsumメソッドだと値がない場合は0を返すため、存在がないことと0の区別ができない
         OptionalInt maxCalories = Dish.menu.stream()
                 .mapToInt(Dish::getCalories)
                 .max();
-
-        int max;
-        if(maxCalories.isPresent()){
-            max = maxCalories.getAsInt();
-        }
-        else {
-            // we can choose a default value
-            max = 1;
-        }
+        int max = (maxCalories.isPresent()) ? maxCalories.getAsInt() : 1;
         System.out.println(max);
 
         System.out.println("--------------------");
 
-        // numeric ranges
+        // numeric ranges -> rangeClosed(範囲の開始値を最初のパラメータ, 範囲の終了値を2番目のパラメータ)
+        // 包括的 rangeClosed(1, 100) -> 1から100
+        // 排他的 range(1, 100) -> 1から99
         IntStream evenNumbers = IntStream.rangeClosed(1, 100)
                 .filter(n -> n % 2 == 0);
-
         System.out.println(evenNumbers.count());
+
+        System.out.println("--------------------");
 
         Stream<int[]> pythagoreanTriples =
                 IntStream.rangeClosed(1, 100).boxed()

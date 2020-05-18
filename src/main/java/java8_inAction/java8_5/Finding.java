@@ -24,7 +24,7 @@ public class Finding{
         System.out.println(isHealthyMenu());
         System.out.println(isHealthyMenu2());
 
-        // isPresent() は Optional に値が含まれている場合は true を返し、そうでない場合は false を返します。
+        // ifPresent() は Optional に値が含まれている場合は true を返し、そうでない場合は false を返します。
         Optional<Dish> dish = findVegetarianDish();
         dish.ifPresent(d -> System.out.println(d.getName()));
     }

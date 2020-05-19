@@ -3,6 +3,7 @@ package java8_inAction.java8_5;
 import java8_inAction.java8_5.domain.Trader;
 import java8_inAction.java8_5.domain.Transaction;
 
+import javax.swing.plaf.synth.SynthTextAreaUI;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -10,6 +11,7 @@ import java.util.Optional;
 import static java.util.Comparator.comparing;
 import static java.util.stream.Collectors.toList;
 
+// 5_5
 public class PuttingIntoPractice{
     public static void main(String ...args){
         Trader raoul = new Trader("Raoul", "Cambridge");
@@ -68,8 +70,7 @@ public class PuttingIntoPractice{
 
         // Query 5: Are there any trader based in Milan?
         // ミラノに拠点を置くトレーダーはいますか？
-        boolean milanBased =
-                transactions.stream()
+        boolean milanBased = transactions.stream()
                         .anyMatch(transaction -> transaction.getTrader()
                                 .getCity()
                                 .equals("Milan")
@@ -80,10 +81,9 @@ public class PuttingIntoPractice{
         // Query 6: Update all transactions so that the traders from Milan are set to Cambridge.
         // ケンブリッジに住んでいるトレーダーのすべての取引の値を表示します。
         transactions.stream()
-                .map(Transaction::getTrader)
-                .filter(trader -> trader.getCity().equals("Milan"))
-                .forEach(trader -> trader.setCity("Cambridge"));
-        System.out.println(transactions);
+                .filter(t -> "Cambridge".equals(t.getTrader().getCity()))
+                .map(t -> t.getValue())
+                .forEach(System.out::println);
 
 
         // Query 7: What's the highest value in all the transactions?

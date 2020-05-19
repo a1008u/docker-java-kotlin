@@ -8,6 +8,7 @@ import java.util.OptionalInt;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
+// 5_6
 // IntStream
 // DoubleStream
 // LongStream
@@ -26,8 +27,7 @@ public class NumericStreams {
         System.out.println("Number of calories:" + calories);
 
         // IntStreamをStream<Integer>に変換する
-        IntStream intStreamCalories = Dish.menu.stream()
-                .mapToInt(Dish::getCalories);
+        IntStream intStreamCalories = Dish.menu.stream().mapToInt(Dish::getCalories);
         Stream<Integer> streamCalories = intStreamCalories.boxed();
 
         System.out.println("--------------------");
@@ -46,16 +46,15 @@ public class NumericStreams {
         // numeric ranges -> rangeClosed(範囲の開始値を最初のパラメータ, 範囲の終了値を2番目のパラメータ)
         // 包括的 rangeClosed(1, 100) -> 1から100
         // 排他的 range(1, 100) -> 1から99
-        IntStream evenNumbers = IntStream.rangeClosed(1, 100)
-                .filter(n -> n % 2 == 0);
+        IntStream evenNumbers = IntStream.rangeClosed(1, 100).filter(n -> n % 2 == 0);
         System.out.println(evenNumbers.count());
 
         System.out.println("--------------------");
 
-        Stream<int[]> pythagoreanTriples =
-                IntStream.rangeClosed(1, 100).boxed()
+        Stream<int[]> pythagoreanTriples = IntStream.rangeClosed(1, 100).boxed()
                         .flatMap(a -> IntStream.rangeClosed(a, 100)
-                                .filter(b -> Math.sqrt(a*a + b*b) % 1 == 0).boxed()
+                                .filter(b -> Math.sqrt(a*a + b*b) % 1 == 0)
+                                .boxed()
                                 .map(b -> new int[]{a, b, (int) Math.sqrt(a * a + b * b)}));
 
         pythagoreanTriples.forEach(t -> System.out.println(t[0] + ", " + t[1] + ", " + t[2]));

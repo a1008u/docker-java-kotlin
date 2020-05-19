@@ -8,6 +8,7 @@ import java.util.function.IntSupplier;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
+// 5_7
 public class BuildingStreams {
 
     public static void main(String...args) throws Exception{

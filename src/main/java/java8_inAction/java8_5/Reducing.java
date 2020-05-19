@@ -21,6 +21,7 @@ import java.util.Optional;
  *  ステートフルだと、要素が大きいと内部での保持するためのサイズが大きくなるので注意が必要
  *
  */
+// 5_4
 public class Reducing {
 
     public static void main(String...args){
@@ -34,19 +35,20 @@ public class Reducing {
 
         System.out.println("--------------------");
 
+        // int sum2 = numbers.stream().reduce(0, (a,b) -> Integer.sum(a,b));
         int sum2 = numbers.stream().reduce(0, Integer::sum);
         System.out.println(sum2);
 
         System.out.println("--------------------");
 
-        int max = numbers.stream().reduce(0, (a, b) -> Integer.max(a, b));
+        // int max = numbers.stream().reduce(0, (a, b) -> Integer.max(a, b));
+        int max = numbers.stream().reduce(0, Integer::max);
         System.out.println(max);
 
         System.out.println("--------------------");
 
+        // Optional<Integer> min = numbers.stream().reduce( (i, ii) -> Integer.min(i, ii));
         Optional<Integer> min = numbers.stream().reduce(Integer::min);
-        Optional<Integer> mins = numbers.stream().reduce( (i, ii) -> Integer.min(i, ii));
-        mins.ifPresent(System.out::println);
         min.ifPresent(System.out::println);
 
         System.out.println("--------------------");

@@ -5,6 +5,7 @@ import java.util.function.*;
 import java.util.stream.Collector;
 import static java.util.stream.Collector.Characteristics.*;
 
+// 6_5
 public class ToListCollector<T> implements Collector<T, List<T>, List<T>> {
 
     // startで利用：空のオブジェクトを返す必要がある。

@@ -8,6 +8,7 @@ import java.util.function.BinaryOperator;
 
 import static java.util.stream.Collectors.*;
 
+// 6_2
 // Collectors.summingInt
 // これは、オブジェクトを合計しなければならない int にマップする関数を受け取り、
 // 通常の collect メソッドに渡されたときに、要求された集計を行うcollectorsを返します。

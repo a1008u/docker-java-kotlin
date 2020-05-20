@@ -12,6 +12,7 @@ import java.util.stream.Stream;
 import static java.util.stream.Collector.Characteristics.IDENTITY_FINISH;
 import static java.util.stream.Collectors.partitioningBy;
 
+// 6_6
 public class PartitionPrimeNumbers {
 
     public static void main(String ... args) {
@@ -21,7 +22,8 @@ public class PartitionPrimeNumbers {
     }
 
     public static Map<Boolean, List<Integer>> partitionPrimes(int n) {
-        return IntStream.rangeClosed(2, n).boxed()
+        return IntStream.rangeClosed(2, n)
+                .boxed()
                 .collect(partitioningBy(candidate -> isPrime(candidate)));
     }
 
@@ -32,7 +34,9 @@ public class PartitionPrimeNumbers {
     }
 
     public static Map<Boolean, List<Integer>> partitionPrimesWithCustomCollector(int n) {
-        return IntStream.rangeClosed(2, n).boxed().collect(new PrimeNumbersCollector());
+        return IntStream.rangeClosed(2, n)
+                .boxed()
+                .collect(new PrimeNumbersCollector());
     }
 
     public static boolean isPrime(List<Integer> primes, Integer candidate) {

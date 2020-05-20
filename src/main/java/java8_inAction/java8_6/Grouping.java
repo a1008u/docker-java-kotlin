@@ -9,6 +9,7 @@ import java.util.Set;
 
 import static java.util.stream.Collectors.*;
 
+// 6_3
 public class Grouping {
 
     enum CaloricLevel { DIET, NORMAL, FAT };

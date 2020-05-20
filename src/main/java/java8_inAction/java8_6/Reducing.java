@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.reducing;
 
+// 6_2
 public class Reducing {
 
     public static void main(String ... args) {
@@ -14,6 +15,7 @@ public class Reducing {
         long howManyDishes1 = Dish.menu.stream().collect(Collectors.counting());
         long howManyDishes2 = Dish.menu.stream().count();
 
+        // 以下は全てカロリーの合計値を算出したものになるよ
         System.out.println("Total calories in menu: " + calculateTotalCalories());
         System.out.println("Total calories in menu: " + calculateTotalCaloriesWithMethodReference());
         System.out.println("Total calories in menu: " + calculateTotalCaloriesWithoutCollectors());

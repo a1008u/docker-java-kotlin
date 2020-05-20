@@ -14,7 +14,7 @@ import static java.util.stream.Collectors.*;
 public class Partitioning {
 
     public static void main(String ... args) {
-        System.out.println("Dishes partitioned by vegetarian: " + partitionByVegeterian().get(true)+ partitionByVegeterian().get(false));
+        System.out.println("Dishes partitioned by vegetarian: " + partitionByVegeterian().get(true) + partitionByVegeterian().get(false));
         System.out.println("partitionByVegeterian()--------------------");
         System.out.println("Vegetarian Dishes by type: " + vegetarianDishesByType());
         System.out.println("vegetarianDishesByType()--------------------");

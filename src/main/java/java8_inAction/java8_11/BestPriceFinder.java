@@ -19,6 +19,7 @@ public class BestPriceFinder {
             new Shop("BuyItAll"),
             new Shop("ShopEasy"));
 
+    // ThreadPool（複数のThreadを作って、待機させる）を作成する
     // shopの数だけThreadを作成する(100で予約はしているが、実際利用する際は小さいを利用する)
     private final Executor executor = Executors.newFixedThreadPool(Math.min(shops.size(), 100), new ThreadFactory() {
         @Override
